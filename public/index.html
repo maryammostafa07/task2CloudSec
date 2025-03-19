@@ -3,36 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form</title>
+    <title>Static Website</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Welcome to My Server</h1>
-    <p>Submit the form below:</p>
-
-    <form id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required>
-        <input type="email" id="email" placeholder="Your Email" required>
-        <button type="submit">Submit</button>
-    </form>
-
-    <script>
-        document.getElementById("contactForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            
-            const data = {
-                name: document.getElementById("name").value,
-                email: document.getElementById("email").value
-            };
-
-            const response = await fetch('/contact', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-            alert(result.message);
-        });
-    </script>
+    <header>
+        <h1>Welcome to My Static Website</h1>
+    </header>
+    <main>
+        <p>This is a simple static website served by a Node.js server.</p>
+        <button onclick="showAlert()">Click Me</button>
+    </main>
+    <script src="script.js"></script>
 </body>
 </html>

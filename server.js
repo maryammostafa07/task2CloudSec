@@ -3,25 +3,20 @@ const cors = require('cors');
 
 const app = express();
 
-// 🛡️ Enable CORS Middleware
 app.use(cors());
 
-// 📝 Parse JSON Middleware
 app.use(express.json());
 
-app.use(express.static('public'));
-
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.json({ message: "Welcome to the CORS-enabled Express server!" });
 });
 
-app.post('/contact', (req, res) => {
-    console.log('Contact Form Data:', req.body);
-    res.json({ message: "Form submitted successfully!", data: req.body });
+app.post('/data', (req, res) => {
+    console.log('Received data:', req.body);
+    res.json({ status: 'Success', received: req.body });
 });
 
-// 🏃 Start Server
-const PORT = 4000;
+const PORT = 8000;
 app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+    console.log(`Server is running at http://localhost:${PORT}`);
 });
